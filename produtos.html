@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produtos - Constrular</title>
+  <style>
+    /* (O mesmo CSS da página anterior) */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #d4a373;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header img { width: 120px; }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover { color: #2c2c2c; }
+
+    form.pesquisa input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #d4a373;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    footer {
+      background: #d4a373;
+      padding: 20px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: white;
+    }
+
+    footer ul { list-style: none; }
+
+    footer ul li:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .form-contato input, .form-contato textarea {
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+    }
+
+    .form-contato button {
+      background-color: #fff;
+      color: #d4a373;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-contato button:hover {
+      background-color: #2c2c2c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Constrular">
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+    <form class="pesquisa">
+      <input type="text" placeholder="Buscar produtos...">
+    </form>
+  </header>
+
+  <main>
+    <h2>Lista de Produtos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cimento CP-II</td>
+          <td>Argamassas</td>
+          <td>R$ 32,00</td>
+        </tr>
+        <tr>
+          <td>Tinta Acrílica 18L</td>
+          <td>Tintas</td>
+          <td>R$ 189,90</td>
+        </tr>
+        <tr>
+          <td>Bloco de Concreto</td>
+          <td>Alvenaria</td>
+          <td>R$ 2,50</td>
+        </tr>
+        <tr>
+          <td>Areia Lavada (m³)</td>
+          <td>Materiais Básicos</td>
+          <td>R$ 140,00</td>
+        </tr>
+        <tr>
+          <td>Caixa d’água 500L</td>
+          <td>Hidráulica</td>
+          <td>R$ 280,00</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <div>
+      <h3>Contato</h3>
+      <ul>
+        <li>Telefone: (00) 1234-5678</li>
+        <li>Email: contato@constrular.com</li>
+        <li>Endereço: Rua Central, 100 - Centro</li>
+      </ul>
+    </div>
+    <div class="form-contato">
+      <h3>Fale conosco</h3>
+      <form>
+        <input type="text" placeholder="Seu nome">
+        <input type="email" placeholder="Seu email">
+        <textarea rows="3" placeholder="Sua mensagem"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </footer>
+</body>
+</html>

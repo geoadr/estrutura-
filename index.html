@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja de Materiais de Construção</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #dfb77c;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+   header {
+  background-color: #ede7d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  position: relative;
+  height: 100px;
+  overflow: visible;
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+header img {
+  height: 180px;
+}
+
+header form {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+}
+
+
+    header input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+    }
+
+    header button {
+      padding: 0.5rem;
+      border: none;
+      background-color: #d35400;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #d35400;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #e9c46a;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .carrossel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .carrossel img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .galeria img {
+      width: calc(100% / 5 - 1rem);
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .tabela-produtos {
+      background-color: #ede7d0;
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .tabela-produtos th,
+    .tabela-produtos td {
+      border: 1px solid #ccc;
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    .tabela-produtos th {
+      background-color: #d35400;
+      color: white;
+    }
+
+    .linha-separadora {
+      height: 4px;
+      background-color: #d35400;
+      width: 100%;
+    }
+
+    footer {
+      background-color: #ede7d0;
+      color: #5c3d26;
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1 1 250px;
+    }
+
+    .logo-footer {
+      width: 120px;
+      height: auto;
+    }
+
+    .footer-vertical-text {
+      font-size: 1rem;
+      color: #9e654b;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .footer-social,
+    .footer-contact {
+      flex: 1 1 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-social .social-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-social .social-separator,
+    .footer-contact .social-separator {
+      border: 1px solid #9e654b;
+      margin: 0;
+      width: 100%;
+    }
+
+    .social {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .social a img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .social a:hover img {
+      transform: scale(1.2);
+      filter: brightness(1.4);
+    }
+
+    .footer-contact p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #9e654b;
+    }
+
+    form#form-contato {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    form#form-contato input,
+    form#form-contato textarea {
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: none;
+    }
+
+    form#form-contato button {
+      background-color: #9e654b;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .galeria img {
+        width: calc(100% / 2 - 1rem);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .social {
+        justify-content: center;
+      }
+
+      .footer-social,
+      .footer-contact {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo-container">
+    <img src="logo+.png" alt="Logo Loja">
+  </div>
+  <form>
+    <input type="text" placeholder="Pesquisar...">
+    <button type="submit">Buscar</button>
+  </form>
+</header>
+
+
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <main>
+    <section class="carrossel">
+      <img src="produto1.jpg" alt="Produto 1">
+      <img src="produto2.jpg" alt="Produto 2">
+      <img src="produto3.jpg" alt="Produto 3">
+      <img src="produto4.jpg" alt="Produto 4">
+      <img src="produto5.jpg" alt="Produto 5">
+    </section>
+
+    <section class="galeria">
+      <img src="material1.jpg" alt="Material 1">
+      <img src="material2.jpg" alt="Material 2">
+      <img src="material3.jpg" alt="Material 3">
+      <img src="material4.jpg" alt="Material 4">
+      <img src="material5.jpg" alt="Material 5">
+      <img src="material6.jpg" alt="Material 6">
+      <img src="material7.jpg" alt="Material 7">
+      <img src="material8.jpg" alt="Material 8">
+      <img src="material9.jpg" alt="Material 9">
+      <img src="material10.jpg" alt="Material 10">
+      <img src="material11.jpg" alt="Material 11">
+      <img src="material12.jpg" alt="Material 12">
+      <img src="material13.jpg" alt="Material 13">
+      <img src="material14.jpg" alt="Material 14">
+      <img src="material15.jpg" alt="Material 15">
+    </section>
+
+    <table class="tabela-produtos">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cimento Votoran</td>
+          <td>Argamassas</td>
+          <td>R$ 35,90</td>
+        </tr>
+        <tr>
+          <td>Tijolo Baiano</td>
+          <td>Tijolos</td>
+          <td>R$ 1,50</td>
+        </tr>
+        <tr>
+          <td>Tinta Acrílica Coral</td>
+          <td>Tintas</td>
+          <td>R$ 89,90</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <div class="linha-separadora"></div>
+
+  <footer>
+    <div class="footer-left">
+      <img src="logo+.png" alt="Logo Loja" class="logo-footer">
+      <div class="footer-vertical-text">
+        A base certa para construir o seu futuro.
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <p class="social-title">Nossas Redes:</p>
+      <hr class="social-separator">
+      <div class="social">
+        <a href="https://www.facebook.com" target="_blank"><img src="facebook.png" alt="Facebook" width="35"></a>
+        <a href="https://www.instagram.com" target="_blank"><img src="instagram.png" alt="Instagram" width="40"></a>
+        <a href="https://www.tiktok.com" target="_blank"><img src="tiktok.png" alt="TikTok" width="43"></a>
+        <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube" width="35"></a>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <p><strong>Contato:</strong></p>
+      <hr class="social-separator">
+      <p>Email: contato@lojaconstru.com</p>
+      <p>Telefone: (11) 99999-9999</p>
+
+      <form id="form-contato">
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu email" required>
+        <textarea placeholder="Sua mensagem" rows="3" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <p class="footer-bottom">© 2025 LojaConstru. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
