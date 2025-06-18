@@ -100,19 +100,55 @@
       padding: 2rem;
     }
 
-    .carrossel {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
+    /* Carrossel estilizado */
+    .carrossel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
       margin-bottom: 2rem;
     }
 
+    .carrossel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
     .carrossel img {
-      width: 300px;
-      height: 200px;
+      width: 100%;
+      max-width: 100%;
+      height: 300px;
       object-fit: cover;
-      border-radius: 8px;
       flex-shrink: 0;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(211, 84, 0, 0.8);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .seta:hover {
+      background-color: rgba(255, 140, 0, 0.9);
+    }
+
+    .seta-esquerda {
+      left: 10px;
+    }
+
+    .seta-direita {
+      right: 10px;
     }
 
     .produtos-destaque {
@@ -322,7 +358,7 @@
       }
 
       .carrossel img {
-        width: 250px;
+        height: 200px;
       }
     }
   </style>
@@ -351,12 +387,16 @@
   </nav>
 
   <main>
-    <section class="carrossel">
-      <img src="produto1.jpg" alt="Produto 1">
-      <img src="produto2.jpg" alt="Produto 2">
-      <img src="produto3.jpg" alt="Produto 3">
-      <img src="produto4.jpg" alt="Produto 4">
-      <img src="produto5.jpg" alt="Produto 5">
+    <section class="carrossel-container">
+      <div class="carrossel" id="carrossel">
+        <img src="1.jpg" alt="img 1">
+        <img src="2.jpg" alt="img 2">
+        <img src="3.jpg" alt="img 3">
+        <img src="4.jpg" alt="img 4">
+        <img src="5.jpg" alt="img 5">
+      </div>
+      <button class="seta seta-esquerda" onclick="voltarImagem()">&#10094;</button>
+      <button class="seta seta-direita" onclick="avancarImagem()">&#10095;</button>
     </section>
 
     <h2 style="text-align: center; color: #5c3d26; margin: 2rem 0 1rem;">Destaques da Semana</h2>
@@ -382,37 +422,37 @@
     </section>
 
     <h2 style="text-align: center; color: #5c3d26; margin-top: 3rem;">Tabela de Orçamento/Serviços</h2>
-<table class="tabela-produtos">
-  <thead>
-    <tr>
-      <th>Serviço</th>
-      <th>Valor (R$)</th>
-      <th>Observações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Entrega até 10 km</td>
-      <td>50,00</td>
-      <td>Pode variar por peso</td>
-    </tr>
-    <tr>
-      <td>Instalação de piso</td>
-      <td>20,00/m²</td>
-      <td>Mínimo de 15m²</td>
-    </tr>
-    <tr>
-      <td>Aplicação de massa corrida</td>
-      <td>18,00/m²</td>
-      <td>Inclui lixa e acabamento</td>
-    </tr>
-    <tr>
-      <td>Pintura interna com tinta acrílica</td>
-      <td>22,00/m²</td>
-      <td>Inclui material e mão de obra</td>
-    </tr>
-  </tbody>
-</table>
+    <table class="tabela-produtos">
+      <thead>
+        <tr>
+          <th>Serviço</th>
+          <th>Valor (R$)</th>
+          <th>Observações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Entrega até 10 km</td>
+          <td>50,00</td>
+          <td>Pode variar por peso</td>
+        </tr>
+        <tr>
+          <td>Instalação de piso</td>
+          <td>20,00/m²</td>
+          <td>Mínimo de 15m²</td>
+        </tr>
+        <tr>
+          <td>Aplicação de massa corrida</td>
+          <td>18,00/m²</td>
+          <td>Inclui lixa e acabamento</td>
+        </tr>
+        <tr>
+          <td>Pintura interna com tinta acrílica</td>
+          <td>22,00/m²</td>
+          <td>Inclui material e mão de obra</td>
+        </tr>
+      </tbody>
+    </table>
 
   </main>
 
@@ -467,6 +507,27 @@
       box.style.display = box.style.display === "flex" ? "none" : "flex";
       box.style.flexDirection = "column";
     }
+
+    let indexAtual = 0;
+    const imagens = document.querySelectorAll('#carrossel img');
+    const totalImagens = imagens.length;
+
+    function atualizarCarrossel() {
+      const carrossel = document.getElementById('carrossel');
+      carrossel.style.transform = `translateX(-${indexAtual * 100}%)`;
+    }
+
+    function avancarImagem() {
+      indexAtual = (indexAtual + 1) % totalImagens;
+      atualizarCarrossel();
+    }
+
+    function voltarImagem() {
+      indexAtual = (indexAtual - 1 + totalImagens) % totalImagens;
+      atualizarCarrossel();
+    }
+
+    setInterval(avancarImagem, 4000);
   </script>
 
 </body>
