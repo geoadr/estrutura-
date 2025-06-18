@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LojaConstru - Materiais de Construção</title>
+  <title>Materiais de Construção</title>
   <style>
     * {
       margin: 0;
@@ -37,7 +37,7 @@
     }
 
     header img {
-      height: 180px;
+      height: 155px;
     }
 
     .icons-header {
@@ -413,7 +413,30 @@
   color: #333;
   line-height: 1.6;
 }
+.titulo-secao {
+  font-size: 2rem;
+  color: #d35400;
+  text-align: center;
+  margin: 2.5rem 0 1rem;
+  font-weight: 700;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.titulo-secao::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #e67e22;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+ @keyframes fadeout {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
   </style>
 </head>
 <body>
@@ -444,16 +467,16 @@
       <div class="carrossel" id="carrossel">
         <img src="img 1.jpeg" alt="img 1">
         <img src="img 2.jpeg" alt="img 2">
-        <img src="3.jpg" alt="img 3">
-        <img src="4.jpg" alt="img 4">
-        <img src="5.jpg" alt="img 5">
+        <img src="img 3.jpeg" alt="img 3">
+        <img src="img 4.jpeg" alt="img 4">
+        <img src="img 5.jpeg" alt="img 5">
       </div>
       <button class="seta seta-esquerda" onclick="voltarImagem()">&#10094;</button>
       <button class="seta seta-direita" onclick="avancarImagem()">&#10095;</button>
     </section>
 
-    <h2 style="text-align: center; color: #5c3d26; margin: 2rem 0 1rem;">Destaques da Semana</h2>
-    <section class="produtos-destaque">
+    <h2 class="titulo-secao">Destaques da Semana</h2>
+     <section class="produtos-destaque">
   <div class="produto-card">
     <img src="cimento.jpeg" alt="Cimento Votoran">
     <h3>Cimento Votoran</h3>
@@ -522,9 +545,8 @@
 </section>
 
 
-
-    <h2 style="text-align: center; color: #5c3d26; margin-top: 3rem;">Tabela de Orçamento/Serviços</h2>
-    <table class="tabela-produtos">
+<h2 class="titulo-secao">Tabela de Orçamento/Serviços</h2>
+     <table class="tabela-produtos">
       <thead>
         <tr>
           <th>Serviço</th>
@@ -646,6 +668,34 @@
     }
 
     setInterval(avancarImagem, 4000);
+     function mostrarConfirmacao(botao) {
+    // Verifica se já existe a mensagem para não criar duplicada
+    if (botao.nextElementSibling && botao.nextElementSibling.classList.contains('confirmacao')) {
+      return;
+    }
+
+    const mensagem = document.createElement('div');
+    mensagem.className = 'confirmacao';
+    mensagem.textContent = 'Produto adicionado!';
+    mensagem.style.color = '#27ae60';
+    mensagem.style.fontWeight = 'bold';
+    mensagem.style.marginTop = '0.5rem';
+    mensagem.style.fontSize = '0.9rem';
+    mensagem.style.animation = 'fadeout 2s forwards';
+
+    botao.parentNode.insertBefore(mensagem, botao.nextSibling);
+
+    setTimeout(() => {
+      mensagem.remove();
+    }, 2000);
+  }
+
+  // Adiciona evento a todos os botões "Adicionar ao Carrinho"
+  document.querySelectorAll('.btn-carrinho').forEach(botao => {
+    botao.addEventListener('click', () => {
+      mostrarConfirmacao(botao);
+    });
+  });
   </script>
 
 </body>
