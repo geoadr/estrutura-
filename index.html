@@ -100,7 +100,7 @@
       padding: 2rem;
     }
 
-    /* Carrossel estilizado */
+    
     .carrossel-container {
       position: relative;
       overflow: hidden;
@@ -176,7 +176,7 @@
 
     .produto-card img {
       width: 100%;
-      height: 150px;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
     }
@@ -361,6 +361,38 @@
         height: 200px;
       }
     }
+    .preco-quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.preco-quantidade input {
+  width: 60px;
+  padding: 0.3rem;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-carrinho {
+  margin-top: 0.7rem;
+  padding: 0.5rem;
+  background-color: #21232c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-carrinho:hover {
+  background-color: #e67e22;
+}
+
   </style>
 </head>
 <body>
@@ -401,25 +433,73 @@
 
     <h2 style="text-align: center; color: #5c3d26; margin: 2rem 0 1rem;">Destaques da Semana</h2>
     <section class="produtos-destaque">
-      <div class="produto-card">
-        <img src="cimento.jpg" alt="Cimento Votoran">
-        <h3>Cimento Votoran</h3>
-        <p>Argamassa de alta resistência para sua obra.</p>
-        <span class="preco">R$ 35,90</span>
-      </div>
-      <div class="produto-card">
-        <img src="tijolo.jpg" alt="Tijolo Baiano">
-        <h3>Tijolo Baiano</h3>
-        <p>Ideal para alvenaria estrutural e vedação.</p>
-        <span class="preco">R$ 1,50</span>
-      </div>
-      <div class="produto-card">
-        <img src="tinta.jpg" alt="Tinta Coral">
-        <h3>Tinta Acrílica Coral</h3>
-        <p>Alta cobertura e durabilidade.</p>
-        <span class="preco">R$ 89,90</span>
-      </div>
-    </section>
+  <div class="produto-card">
+    <img src="cimento.jpeg" alt="Cimento Votoran">
+    <h3>Cimento Votoran</h3>
+    <p>Argamassa de alta resistência para sua obra.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 35,90</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+
+  <div class="produto-card">
+    <img src="tijolo.jpeg" alt="Tijolo Baiano">
+    <h3>Tijolo Baiano</h3>
+    <p>Ideal para alvenaria estrutural e vedação.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 1,50</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+
+  <div class="produto-card">
+    <img src="tinta.jpeg" alt="Tinta Coral">
+    <h3>Tinta Acrílica Coral</h3>
+    <p>Alta cobertura e durabilidade.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 89,90</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+    <div class="produto-card">
+    <img src="areia lavada.jpeg" alt="Areia Lavada">
+    <h3>Areia Lavada</h3>
+    <p>Areia fina ideal para reboco e assentamento.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 90,00/m³</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+
+  <div class="produto-card">
+    <img src="telha.jpeg" alt="Telha Cerâmica">
+    <h3>Telha Cerâmica</h3>
+    <p>Resistência e beleza para sua cobertura.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 3,20</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+
+  <div class="produto-card">
+    <img src="cp.jpeg" alt="Cimento CP-II">
+    <h3>Cimento CP-II</h3>
+    <p>Alta durabilidade e secagem rápida.</p>
+    <div class="preco-quantidade">
+      <span class="preco">R$ 39,90</span>
+      <input type="number" min="1" value="1">
+    </div>
+    <button class="btn-carrinho">Adicionar ao Carrinho</button>
+  </div>
+
+</section>
+
 
     <h2 style="text-align: center; color: #5c3d26; margin-top: 3rem;">Tabela de Orçamento/Serviços</h2>
     <table class="tabela-produtos">
@@ -488,7 +568,7 @@
     <div class="footer-contact">
       <p><strong>Contato:</strong></p>
       <hr class="social-separator">
-      <p>Email: contato@lojaconstru.com</p>
+      <p>Email: contato@estrutura.com</p>
       <p>Telefone: (11) 99999-9999</p>
       <form id="form-contato">
         <input type="text" placeholder="Seu nome" required>
@@ -498,7 +578,7 @@
       </form>
     </div>
 
-    <p class="footer-bottom">© 2025 LojaConstru. Todos os direitos reservados.</p>
+    <p class="footer-bottom">© 2025 Estrutura+. Todos os direitos reservados.</p>
   </footer>
 
   <script>
