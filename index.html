@@ -115,6 +115,54 @@
       flex-shrink: 0;
     }
 
+    .produtos-destaque {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+
+    .produto-card {
+      background-color: #fff8e7;
+      border: 1px solid #d35400;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 250px;
+      text-align: center;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .produto-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .produto-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .produto-card h3 {
+      margin: 0.8rem 0 0.4rem;
+      color: #d35400;
+    }
+
+    .produto-card p {
+      font-size: 0.9rem;
+      color: #5c3d26;
+    }
+
+    .produto-card .preco {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      color: #9e654b;
+      font-size: 1.1rem;
+    }
+
     .tabela-produtos {
       background-color: #ede7d0;
       width: 100%;
@@ -272,6 +320,10 @@
       .social {
         justify-content: center;
       }
+
+      .carrossel img {
+        width: 250px;
+      }
     }
   </style>
 </head>
@@ -281,12 +333,10 @@
     <div class="logo-container">
       <img src="logo+.png" alt="Logo Loja">
     </div>
-
     <div class="icons-header">
       <img src="lupa.png" alt="Pesquisar" onclick="toggleSearch()" title="Pesquisar">
       <a href="carrinho.html"><img src="carrinho.png" alt="Carrinho" title="Carrinho de Compras"></a>
     </div>
-
     <div class="search-box" id="searchBox">
       <form>
         <input type="text" placeholder="Pesquisar...">
@@ -309,32 +359,61 @@
       <img src="produto5.jpg" alt="Produto 5">
     </section>
 
-    <table class="tabela-produtos">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Categoria</th>
-          <th>Preço</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cimento Votoran</td>
-          <td>Argamassas</td>
-          <td>R$ 35,90</td>
-        </tr>
-        <tr>
-          <td>Tijolo Baiano</td>
-          <td>Tijolos</td>
-          <td>R$ 1,50</td>
-        </tr>
-        <tr>
-          <td>Tinta Acrílica Coral</td>
-          <td>Tintas</td>
-          <td>R$ 89,90</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2 style="text-align: center; color: #5c3d26; margin: 2rem 0 1rem;">Destaques da Semana</h2>
+    <section class="produtos-destaque">
+      <div class="produto-card">
+        <img src="cimento.jpg" alt="Cimento Votoran">
+        <h3>Cimento Votoran</h3>
+        <p>Argamassa de alta resistência para sua obra.</p>
+        <span class="preco">R$ 35,90</span>
+      </div>
+      <div class="produto-card">
+        <img src="tijolo.jpg" alt="Tijolo Baiano">
+        <h3>Tijolo Baiano</h3>
+        <p>Ideal para alvenaria estrutural e vedação.</p>
+        <span class="preco">R$ 1,50</span>
+      </div>
+      <div class="produto-card">
+        <img src="tinta.jpg" alt="Tinta Coral">
+        <h3>Tinta Acrílica Coral</h3>
+        <p>Alta cobertura e durabilidade.</p>
+        <span class="preco">R$ 89,90</span>
+      </div>
+    </section>
+
+    <h2 style="text-align: center; color: #5c3d26; margin-top: 3rem;">Tabela de Orçamento/Serviços</h2>
+<table class="tabela-produtos">
+  <thead>
+    <tr>
+      <th>Serviço</th>
+      <th>Valor (R$)</th>
+      <th>Observações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Entrega até 10 km</td>
+      <td>50,00</td>
+      <td>Pode variar por peso</td>
+    </tr>
+    <tr>
+      <td>Instalação de piso</td>
+      <td>20,00/m²</td>
+      <td>Mínimo de 15m²</td>
+    </tr>
+    <tr>
+      <td>Aplicação de massa corrida</td>
+      <td>18,00/m²</td>
+      <td>Inclui lixa e acabamento</td>
+    </tr>
+    <tr>
+      <td>Pintura interna com tinta acrílica</td>
+      <td>22,00/m²</td>
+      <td>Inclui material e mão de obra</td>
+    </tr>
+  </tbody>
+</table>
+
   </main>
 
   <div class="linha-separadora"></div>
@@ -342,9 +421,7 @@
   <footer>
     <div class="footer-left">
       <img src="logo+.png" alt="Logo Loja" class="logo-footer">
-      <div class="footer-vertical-text">
-        A base certa para construir o seu futuro.
-      </div>
+      <div class="footer-vertical-text">A base certa para construir o seu futuro.</div>
     </div>
 
     <div class="footer-social">
@@ -373,7 +450,6 @@
       <hr class="social-separator">
       <p>Email: contato@lojaconstru.com</p>
       <p>Telefone: (11) 99999-9999</p>
-
       <form id="form-contato">
         <input type="text" placeholder="Seu nome" required>
         <input type="email" placeholder="Seu email" required>
@@ -389,6 +465,7 @@
     function toggleSearch() {
       const box = document.getElementById("searchBox");
       box.style.display = box.style.display === "flex" ? "none" : "flex";
+      box.style.flexDirection = "column";
     }
   </script>
 
