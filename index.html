@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja de Materiais de Construção</title>
+  <title>LojaConstru - Materiais de Construção</title>
   <style>
     * {
       margin: 0;
@@ -19,48 +19,62 @@
       min-height: 100vh;
     }
 
-   header {
-  background-color: #ede7d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  position: relative;
-  height: 100px;
-  overflow: visible;
-}
-
-.logo-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-header img {
-  height: 180px;
-}
-
-header form {
-  position: absolute;
-  right: 1rem;
-  display: flex;
-}
-
-
-    header input {
-      padding: 0.5rem;
-      border: none;
-      border-radius: 4px 0 0 4px;
+    header {
+      background-color: #ede7d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      position: relative;
+      height: 100px;
     }
 
-    header button {
-      padding: 0.5rem;
-      border: none;
-      background-color: #d35400;
-      color: white;
-      border-radius: 0 4px 4px 0;
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    header img {
+      height: 180px;
+    }
+
+    .icons-header {
+      position: absolute;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icons-header img {
+      width: 60px;
+      height: 60px;
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .icons-header img:hover {
+      transform: scale(1.2);
+    }
+
+    .search-box {
+      display: none;
+      position: absolute;
+      top: 110%;
+      right: 1rem;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    .search-box input {
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 200px;
     }
 
     nav {
@@ -99,20 +113,6 @@ header form {
       object-fit: cover;
       border-radius: 8px;
       flex-shrink: 0;
-    }
-
-    .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .galeria img {
-      width: calc(100% / 5 - 1rem);
-      height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
     }
 
     .tabela-produtos {
@@ -171,21 +171,23 @@ header form {
     }
 
     .footer-social,
-    .footer-contact {
+    .footer-contact,
+    .formas-pagamento {
       flex: 1 1 250px;
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      width: 100%;
     }
 
-    .footer-social .social-title {
+    .footer-social .social-title,
+    .formas-pagamento p {
       font-weight: bold;
       font-size: 1.1rem;
       margin-bottom: 0.2rem;
     }
 
-    .footer-social .social-separator,
-    .footer-contact .social-separator {
+    .social-separator {
       border: 1px solid #9e654b;
       margin: 0;
       width: 100%;
@@ -211,6 +213,16 @@ header form {
       margin: 0;
       font-size: 0.95rem;
       line-height: 1.4;
+    }
+
+    .pagamento-imgs {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .pagamento-imgs img {
+      border-radius: 10px;
     }
 
     .footer-bottom {
@@ -245,44 +257,42 @@ header form {
     }
 
     @media (max-width: 768px) {
-      .galeria img {
-        width: calc(100% / 2 - 1rem);
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
       .footer-left {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
 
-      .social {
-        justify-content: center;
+      .footer-social,
+      .footer-contact,
+      .formas-pagamento {
+        align-items: center;
       }
 
-      .footer-social,
-      .footer-contact {
-        align-items: center;
+      .social {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-  <div class="logo-container">
-    <img src="logo+.png" alt="Logo Loja">
-  </div>
-  <form>
-    <input type="text" placeholder="Pesquisar...">
-    <button type="submit">Buscar</button>
-  </form>
-</header>
 
+  <header>
+    <div class="logo-container">
+      <img src="logo+.png" alt="Logo Loja">
+    </div>
+
+    <div class="icons-header">
+      <img src="lupa.png" alt="Pesquisar" onclick="toggleSearch()" title="Pesquisar">
+      <a href="carrinho.html"><img src="carrinho.png" alt="Carrinho" title="Carrinho de Compras"></a>
+    </div>
+
+    <div class="search-box" id="searchBox">
+      <form>
+        <input type="text" placeholder="Pesquisar...">
+      </form>
+    </div>
+  </header>
 
   <nav>
     <a href="index.html">Início</a>
@@ -297,24 +307,6 @@ header form {
       <img src="produto3.jpg" alt="Produto 3">
       <img src="produto4.jpg" alt="Produto 4">
       <img src="produto5.jpg" alt="Produto 5">
-    </section>
-
-    <section class="galeria">
-      <img src="material1.jpg" alt="Material 1">
-      <img src="material2.jpg" alt="Material 2">
-      <img src="material3.jpg" alt="Material 3">
-      <img src="material4.jpg" alt="Material 4">
-      <img src="material5.jpg" alt="Material 5">
-      <img src="material6.jpg" alt="Material 6">
-      <img src="material7.jpg" alt="Material 7">
-      <img src="material8.jpg" alt="Material 8">
-      <img src="material9.jpg" alt="Material 9">
-      <img src="material10.jpg" alt="Material 10">
-      <img src="material11.jpg" alt="Material 11">
-      <img src="material12.jpg" alt="Material 12">
-      <img src="material13.jpg" alt="Material 13">
-      <img src="material14.jpg" alt="Material 14">
-      <img src="material15.jpg" alt="Material 15">
     </section>
 
     <table class="tabela-produtos">
@@ -362,7 +354,17 @@ header form {
         <a href="https://www.facebook.com" target="_blank"><img src="facebook.png" alt="Facebook" width="35"></a>
         <a href="https://www.instagram.com" target="_blank"><img src="instagram.png" alt="Instagram" width="40"></a>
         <a href="https://www.tiktok.com" target="_blank"><img src="tiktok.png" alt="TikTok" width="43"></a>
-        <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube" width="35"></a>
+        <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube" width="43"></a>
+      </div>
+    </div>
+
+    <div class="formas-pagamento">
+      <p><strong>Formas de Pagamento:</strong></p>
+      <hr class="social-separator">
+      <div class="pagamento-imgs">
+        <img src="pix.jpeg" alt="Pix" width="35">
+        <img src="visa.jpeg" alt="Cartão de Crédito" width="35">
+        <img src="mastercard.jpeg" alt="Cartão de Débito" width="35">
       </div>
     </div>
 
@@ -382,5 +384,13 @@ header form {
 
     <p class="footer-bottom">© 2025 LojaConstru. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function toggleSearch() {
+      const box = document.getElementById("searchBox");
+      box.style.display = box.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+
 </body>
 </html>
